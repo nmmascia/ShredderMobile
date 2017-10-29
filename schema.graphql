@@ -1,8 +1,73 @@
-type User {
+schema {
+  query: RootQuery
+  mutation: RootMutations
+}
+
+# Represents a guitar for a user
+type Guitar {
+  id: ID!
+  manufacturer: String!
+  model: String!
+}
+
+type RootMutations {
+  createGuitar(manufacturer: String!, model: String!): Guitar
+  addGuitarToTrack(id: ID!, guitarId: ID!): Track
+  addTuningToTrack(id: ID!, tuningId: ID!): Track
+  createTrack(name: String!, artist: String!): Track
+  createSetlist(numberOfTracks: Int): Setlist
+}
+
+type RootQuery {
+  guitar(id: ID!): Guitar
+  setlist(id: ID!): Setlist
+  track(id: ID!): Track
+  tuning(id: ID!): Tuning
+  tunings: [Tuning]
+  user(id: ID!): User
+}
+
+# Represents a shredder setlist
+type Setlist {
+  id: ID!
+  practicesCount: Int!
+  favorited: Boolean!
+  tracks: [Track]
+}
+
+# Represents a setlist track
+type Track {
+  id: ID!
+  name: String!
+  artist: String
+
+  # List of guitars used to play a track
+  guitars: [Guitar]
+
+  # The tuning you like to play this song in
+  tuning: Tuning
+  guitar: Guitar
+}
+
+# Represents a guitar tuning
+type Tuning {
   id: ID!
   name: String!
 }
 
-type Query {
-  user(id: ID!): User
+# Represents a shredder user
+type User {
+  id: ID!
+
+  # The user's name
+  name: String!
+
+  # List of setlists for a particular user
+  setlists(id: ID): [Setlist]
+
+  # List of guitars for a particular user
+  guitars: [Guitar]
+
+  # List of tracks for a particular user
+  tracks: [Track]
 }

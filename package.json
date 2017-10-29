@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
+		"build:schema": "graphql-fetch-schema http://localhost:8080/graphql -g",
 		"relay": "relay-compiler --src ./src --schema schema.graphql",
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest"
@@ -16,6 +17,7 @@
 		"babel-jest": "21.2.0",
 		"babel-plugin-relay": "1.4.1",
 		"babel-preset-react-native": "4.0.0",
+		"graphql-fetch-schema": "0.7.1",
 		"jest": "21.2.1",
 		"react-test-renderer": "16.0.0",
 		"relay-compiler": "1.4.1"

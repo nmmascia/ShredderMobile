@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 40e62f005e726407d13a50ef8a977ba2
+ * @relayHash 9fe4a504e4f21d9b30031f69103d523a
  */
 
 /* eslint-disable */
@@ -69,7 +69,7 @@ const batch /*: ConcreteBatch*/ = {
         "storageKey": null
       }
     ],
-    "type": "Query"
+    "type": "RootQuery"
   },
   "id": null,
   "kind": "Batch",
