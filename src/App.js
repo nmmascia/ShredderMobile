@@ -6,14 +6,39 @@ import {
   View
 } from 'react-native';
 
+import {
+  QueryRenderer,
+  graphql,
+} from 'react-relay';
+
+import environment from './relay-environment';
+
+import User from './User';
+
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-      </View>
+      <QueryRenderer
+        environment={environment}
+        query={graphql`
+          query AppQuery($id: ID!) {
+            user(id: $id) {
+              ...User_user
+            }
+          }
+        `}
+        variables={{
+          id: '1'
+        }}
+        render={({error, props}) => {
+          if (error) {
+            return <View><Text>{error.message}</Text></View>;
+          } else if (props) {
+            return <User user={props.user} />;
+          }
+          return <View><Text>Loading</Text></View>;
+        }}
+      />
     );
   }
 }
