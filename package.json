@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
+		"relay": "relay-compiler --src ./src --schema path/schema.graphql",
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest"
 	},
@@ -12,9 +13,11 @@
 	},
 	"devDependencies": {
 		"babel-jest": "21.2.0",
+		"babel-plugin-relay": "1.4.1",
 		"babel-preset-react-native": "4.0.0",
 		"jest": "21.2.1",
-		"react-test-renderer": "16.0.0"
+		"react-test-renderer": "16.0.0",
+		"relay-compiler": "1.4.1"
 	},
 	"jest": {
 		"preset": "react-native"
