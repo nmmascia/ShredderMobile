@@ -3,6 +3,7 @@ import React from 'react';
 import {
   StyleSheet,
   Text,
+  TouchableOpacity,
   View
 } from 'react-native';
 
@@ -14,16 +15,22 @@ const IconLinks = () => (
   <View style={styles.container}>
     <Link
       to="/tracks"
+      component={TouchableOpacity}
+      activeOpacity={0.8}
     >
       <Text style={styles.font}>TRACKS</Text>
     </Link>
     <Link
       to="/guitars"
+      component={TouchableOpacity}
+      activeOpacity={0.8}
     >
       <Text style={styles.font}>GUITARS</Text>
     </Link>
     <Link
       to="/setlists"
+      component={TouchableOpacity}
+      activeOpacity={0.8}
     >
       <Text style={styles.font}>SETLISTS</Text>
     </Link>
@@ -39,6 +46,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20
   },
   font: {
+    flex: 1,
     color: '#fff',
     fontSize: 18
   }

@@ -4,6 +4,7 @@ import {
   Platform,
   StyleSheet,
   Text,
+  TouchableHighlight,
   View
 } from 'react-native';
 
