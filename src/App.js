@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   Platform,
   StyleSheet,
@@ -7,38 +8,68 @@ import {
 } from 'react-native';
 
 import {
-  QueryRenderer,
-  graphql,
-} from 'react-relay';
+  NativeRouter,
+  Route,
+  Link
+} from 'react-router-native';
 
-import environment from './relay-environment';
-
-import User from './components/User';
+import IconLinks from './components/IconLinks/IconLinks';
 
 export default class App extends React.Component {
   render() {
     return (
-      <QueryRenderer
-        environment={environment}
-        query={graphql`
-          query AppQuery($id: ID!) {
-            user(id: $id) {
-              ...User_user
-            }
-          }
-        `}
-        variables={{
-          id: '1'
-        }}
-        render={({error, props}) => {
-          if (error) {
-            return <View><Text>{error.message}</Text></View>;
-          } else if (props) {
-            return <User user={props.user} />;
-          }
-          return <View><Text>Loading</Text></View>;
-        }}
-      />
+      <NativeRouter>
+        <View style={styles.container}>
+          <Route
+            exact
+            path="/"
+            component={() => {
+              return (
+                <View>
+                  <Text>Welcome!</Text>
+                </View>
+              );
+            }}
+          />
+          <Route
+            exact
+            path="/tracks"
+            component={() => {
+              return (
+                <View>
+                  <Text>Tracks</Text>
+                </View>
+              );
+            }}
+          />
+          <Route
+            exact
+            path="/guitars"
+            component={() => {
+              return (
+                <View>
+                  <Text>Guitars</Text>
+                </View>
+              );
+            }}
+          />
+          <Route
+            exact
+            path="/setlists"
+            component={() => {
+              return (
+                <View>
+                  <Text>Setlists</Text>
+                </View>
+              );
+            }}
+          />
+
+          <View style={styles.footer}>
+            <IconLinks />
+          </View>
+        </View>
+      </NativeRouter>
     );
   }
 }
@@ -50,14 +81,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  footer: {
+    position: 'absolute',
+    width: '100%',
+    bottom: 0
+  }
 });
