@@ -4,7 +4,6 @@ import {
   Platform,
   StyleSheet,
   Text,
-  TouchableHighlight,
   View
 } from 'react-native';
 
@@ -13,6 +12,8 @@ import {
   Route,
   Link
 } from 'react-router-native';
+
+import Guitars from './components/Guitars/Guitars';
 
 import IconLinks from './components/IconLinks/IconLinks';
 
@@ -48,9 +49,12 @@ export default class App extends React.Component {
             path="/guitars"
             component={() => {
               return (
-                <View>
-                  <Text>Guitars</Text>
-                </View>
+                <Guitars
+                  guitars={[
+                    { id: '1', manufacturer: 'Fender', model: 'Telecaster' },
+                    { id: '2', manufacturer: 'Fender', model: 'Stratocaster' }
+                  ]}
+                />
               );
             }}
           />
