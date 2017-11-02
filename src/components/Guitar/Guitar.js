@@ -7,24 +7,22 @@ import {
   StyleSheet
 } from 'react-native';
 
-const Guitar = ({ guitar }) => {
+const Guitar = (props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.item}>
-        Manufacturer: {guitar.manufacturer}
+        Manufacturer: {props.manufacturer}
       </Text>
       <Text style={styles.item}>
-        Model: {guitar.model}
+        Model: {props.model}
       </Text>
     </View>
   );
 };
 
 Guitar.propTypes = {
-  guitar: PropTypes.shape({
-    manufacturer: PropTypes.string.isRequired,
-    model: PropTypes.string.isRequired,
-  }).isRequired,
+  manufacturer: PropTypes.string.isRequired,
+  model: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({
