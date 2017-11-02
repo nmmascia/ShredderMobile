@@ -22,6 +22,7 @@ export default class App extends React.Component {
     return (
       <NativeRouter>
         <View style={styles.container}>
+          <View style={styles.clear} />
           <Route
             exact
             path="/"
@@ -81,10 +82,13 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    display: 'flex',
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'stretch',
     backgroundColor: '#F5FCFF',
+  },
+  clear: {
+    height: 22
   },
   footer: {
     position: 'absolute',
