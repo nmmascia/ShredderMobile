@@ -13,6 +13,9 @@ import {
   Link
 } from 'react-router-native';
 
+import { ApolloProvider } from 'react-apollo';
+import client from './client';
+
 import Guitars from './components/Guitars/Guitars';
 
 import IconLinks from './components/IconLinks/IconLinks';
@@ -20,62 +23,64 @@ import IconLinks from './components/IconLinks/IconLinks';
 export default class App extends React.Component {
   render() {
     return (
-      <NativeRouter>
-        <View style={styles.container}>
-          <View style={styles.clear} />
-          <Route
-            exact
-            path="/"
-            component={() => {
-              return (
-                <View>
-                  <Text>Welcome!</Text>
-                </View>
-              );
-            }}
-          />
-          <Route
-            exact
-            path="/tracks"
-            component={() => {
-              return (
-                <View>
-                  <Text>Tracks</Text>
-                </View>
-              );
-            }}
-          />
-          <Route
-            exact
-            path="/guitars"
-            component={() => {
-              return (
-                <Guitars
-                  guitars={[
-                    { id: '1', manufacturer: 'Fender', model: 'Telecaster' },
-                    { id: '2', manufacturer: 'Fender', model: 'Stratocaster' }
-                  ]}
-                />
-              );
-            }}
-          />
-          <Route
-            exact
-            path="/setlists"
-            component={() => {
-              return (
-                <View>
-                  <Text>Setlists</Text>
-                </View>
-              );
-            }}
-          />
+      <ApolloProvider client={client}>
+        <NativeRouter>
+          <View style={styles.container}>
+            <View style={styles.clear} />
+            <Route
+              exact
+              path="/"
+              component={() => {
+                return (
+                  <View>
+                    <Text>Welcome!</Text>
+                  </View>
+                );
+              }}
+            />
+            <Route
+              exact
+              path="/tracks"
+              component={() => {
+                return (
+                  <View>
+                    <Text>Tracks</Text>
+                  </View>
+                );
+              }}
+            />
+            <Route
+              exact
+              path="/guitars"
+              component={() => {
+                return (
+                  <Guitars
+                    guitars={[
+                      { id: '1', manufacturer: 'Fender', model: 'Telecaster' },
+                      { id: '2', manufacturer: 'Fender', model: 'Stratocaster' }
+                    ]}
+                  />
+                );
+              }}
+            />
+            <Route
+              exact
+              path="/setlists"
+              component={() => {
+                return (
+                  <View>
+                    <Text>Setlists</Text>
+                  </View>
+                );
+              }}
+            />
 
-          <View style={styles.footer}>
-            <IconLinks />
+            <View style={styles.footer}>
+              <IconLinks />
+            </View>
           </View>
-        </View>
-      </NativeRouter>
+        </NativeRouter>
+      </ApolloProvider>
     );
   }
 }

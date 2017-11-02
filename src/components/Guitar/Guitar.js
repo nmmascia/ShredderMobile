@@ -31,12 +31,10 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    borderWidth: 2,
-    borderColor: '#000',
   },
   item: {
     display: 'flex',
-    flex: 1
+    flex: 1,
   }
 });
 
