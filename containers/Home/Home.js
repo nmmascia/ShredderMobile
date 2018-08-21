@@ -3,6 +3,8 @@ import { View, Text } from 'react-native';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
+import Loader from '../../components/Loader/Loader';
+
 const QUERY = gql`
   {
     user(id: "1") {
@@ -15,13 +17,7 @@ const QUERY = gql`
 const Home = () => (
   <Query query={QUERY}>
     {({ loading, data }) => {
-      if (loading) {
-        return (
-          <View>
-            <Text>Loading...</Text>
-          </View>
-        );
-      }
+      if (loading) return <Loader />;
 
       return (
         <View>
