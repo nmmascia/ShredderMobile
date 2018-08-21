@@ -1,5 +1,8 @@
 import React from 'react';
 import { ScrollView, FlatList, Text, View } from 'react-native';
+import { Link } from 'react-router-native';
+
+import SetlistItem from './SetlistItem';
 
 const SetlistList = ({ setlists = [] }) => (
   <ScrollView>
@@ -9,10 +12,9 @@ const SetlistList = ({ setlists = [] }) => (
       keyExtractor={({ id }) => id}
       renderItem={({ item }) => {
         return (
-          <View>
-            <Text>Setlist</Text>
-            <Text>{item.id}</Text>
-          </View>
+          <Link to={`/setlists/${item.id}`}>
+            <SetlistItem {...item} />
+          </Link>
         );
       }}
     />

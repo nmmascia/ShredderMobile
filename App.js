@@ -24,6 +24,7 @@ export default class App extends React.Component {
             <Switch>
               <Route exact={true} path="/" component={Home} />
               <Route path="/setlists" component={Setlists} />
+              <Route path="/setlists/:id" render={() => <Text>Hi</Text>} />
             </Switch>
             <FooterBar />
           </View>
