@@ -23,8 +23,8 @@ export default class App extends React.Component {
           <View style={styles.container}>
             <Switch>
               <Route exact={true} path="/" component={Home} />
-              <Route path="/setlists" component={Setlists} />
               <Route path="/setlists/:id" render={() => <Text>Hi</Text>} />
+              <Route path="/setlists" component={Setlists} />
             </Switch>
             <FooterBar />
           </View>
