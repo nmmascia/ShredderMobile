@@ -6,6 +6,7 @@ import { Query } from 'react-apollo';
 import Button from '../../components/Button/Button';
 import Title from '../../components/Title/Title';
 import Loader from '../../components/Loader/Loader';
+import TrackPair from '../../components/TrackPair/TrackPair';
 
 const SETLIST_QUERY = gql`
   {
@@ -32,14 +33,16 @@ const Setlist = () => {
           <View style={styles.container}>
             <View style={styles.body}>
               <Title text="Setlist" />
+              <View style={styles.header}>
+                <Text style={styles.headerText}>{'Tracks'.toUpperCase()}</Text>
+              </View>
               <FlatList
                 data={setlist.tracks}
                 keyExtractor={({ id }) => id}
                 renderItem={({ item }) => {
                   return (
-                    <View key={item.id}>
-                      <Text>{item.name}</Text>
-                      <Text>{item.artist}</Text>
+                    <View style={styles.item}>
+                      <TrackPair {...item} />
                     </View>
                   );
                 }}
@@ -60,6 +63,27 @@ const Setlist = () => {
 
 const styles = StyleSheet.create({
   container: {
+  },
+  item: {
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 3,
+    paddingBottom: 3,
+  },
+  header: {
+    display: 'flex',
+    height: 40,
+    backgroundColor: '#000',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+  headerText: {
+    color: '#fff',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    fontSize: 18,
+    fontWeight: '700',
   },
 });
 

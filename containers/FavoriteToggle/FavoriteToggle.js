@@ -15,7 +15,6 @@ const FAVORITED_TOGGLE_MUTATION = gql`
 const FavoriteToggle = ({ setlistId, favorited }) => (
   <Mutation
     mutation={FAVORITED_TOGGLE_MUTATION}
-    variables={{ setlistId }}
   >
     {(updateFavoritedStatusForSetlist) => {
       return (
