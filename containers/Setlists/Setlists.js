@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
