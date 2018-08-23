@@ -2,20 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, View } from 'react-native';
 
-const SetlistItem = ({ favorited }) => (
+import FavoriteToggle from '../../containers/FavoriteToggle/FavoriteToggle';
+
+const SetlistItem = ({ id, favorited }) => (
   <View style={styles.container}>
     <View style={styles.overview}>
       <Text>Name: Setlist</Text>
       <Text>Tracks: 0</Text>
       <Text>Practice Count: 0</Text>
     </View>
-    <View style={styles.actions}>
-      {favorited ? (
-        <Text>Unfavorite</Text>
-      ) : (
-        <Text>Favorite</Text>
-      )}
-    </View>
+    <FavoriteToggle
+      setlistId={id}
+      favorited={favorited}
+    />
   </View>
 );
 
