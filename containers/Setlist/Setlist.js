@@ -19,11 +19,6 @@ const SETLIST_QUERY = gql`
         artist
         name
       }
-      guitars {
-        id
-        manufacturer
-        model
-      }
     }
   }
 `;
@@ -31,7 +26,8 @@ const SETLIST_QUERY = gql`
 const Setlist = () => {
   return (
     <Query query={SETLIST_QUERY}>
-      {({ loading, data }) => {
+      {({ loading, data, error }) => {
+        if (error) return <Text>Error!</Text>;
         if (loading) return <Loader />;
         const { setlist } = data;
         return (
@@ -41,12 +37,12 @@ const Setlist = () => {
               <View style={styles.header}>
                 <Text style={styles.headerText}>{'Setlist stats'.toUpperCase()}</Text>
               </View>
-              <ScrollView>dc
+              <ScrollView>
                 <Text>Number of Practices: 0</Text>
                 <Text>Number of Tracks: 0</Text>
                 <Text>Guitar tunings: Standard, Drop D</Text>
                 <Text>Guitars</Text>
-                {setlist.guitars.map((guitar) => <Text>{guitar.manufacturer}</Text>)}
+                {setlist.guitars && setlist.guitars.map((guitar) => <Text>{guitar.manufacturer}</Text>)}
               </ScrollView>
               <View style={styles.header}>
                 <Text style={styles.headerText}>{'Tracks'.toUpperCase()}</Text>
