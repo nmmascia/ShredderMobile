@@ -7,6 +7,7 @@ import Button from '../../components/Button/Button';
 import Title from '../../components/Title/Title';
 import Loader from '../../components/Loader/Loader';
 import TrackPair from '../../components/TrackPair/TrackPair';
+import LinkButton from '../../components/LinkButton/LinkButton';
 
 const SETLIST_QUERY = gql`
   {
@@ -60,9 +61,9 @@ const Setlist = () => {
               />
             </View>
             <View style={styles.footer}>
-              <Button
+              <LinkButton
+                to="/setlists"
                 text="Begin Practice"
-                onPress={console.log}
               />
             </View>
           </View>
