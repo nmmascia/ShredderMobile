@@ -10,8 +10,8 @@ import TrackPair from '../../components/TrackPair/TrackPair';
 import LinkButton from '../../components/LinkButton/LinkButton';
 
 const SETLIST_QUERY = gql`
-  {
-    setlist(id: "1") {
+  query Setlist($id: ID!) {
+    setlist(id: $id) {
       id
       favorited
       practicesCount
@@ -24,9 +24,12 @@ const SETLIST_QUERY = gql`
   }
 `;
 
-const Setlist = () => {
+const Setlist = ({ match: { params } }) => {
   return (
-    <Query query={SETLIST_QUERY}>
+    <Query
+      query={SETLIST_QUERY}
+      variables={{ ...params }}
+    >
       {({ loading, data, error }) => {
         if (error) return <Text>Error!</Text>;
         if (loading) return <Loader />;
