@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
+import { Feather } from '@expo/vector-icons';
 
 const FAVORITED_TOGGLE_MUTATION = gql`
   mutation UpdateFavoritedStatusForSetlist($setlistId: ID!) {
@@ -26,9 +27,17 @@ const FavoriteToggle = ({ setlistId, favorited }) => (
         >
           <View>
             {favorited ? (
-              <Text>Unfavorite</Text>
+              <Feather
+                name="star"
+                color="yellow"
+                size={30}
+              />
             ) : (
-              <Text>Favorite</Text>
+              <Feather
+                name="star"
+                color="black"
+                size={30}
+              />
             )}
           </View>
         </TouchableOpacity>
