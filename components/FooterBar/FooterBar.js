@@ -8,10 +8,10 @@ const FooterBar = () => (
   <View style={styles.container}>
     <View style={styles.buttons}>
       <Link to="/">
-        <Text style={styles.text}>Home</Text>
+        <Text style={styles.text}>H</Text>
       </Link>
       <Link to="/setlists">
-        <Text style={styles.text}>Setlists</Text>
+        <Text style={styles.text}>S</Text>
       </Link>
     </View>
   </View>
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
   },
   text: {
-    fontSize: 18,
+    fontSize: 32,
     fontWeight: '700',
     color: COLORS.WHITE,
   },
