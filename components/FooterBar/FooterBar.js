@@ -5,8 +5,6 @@ import { Feather } from '@expo/vector-icons';
 
 import COLORS from '../../constants/colors';
 
-console.log(Feather);
-
 const FooterBar = () => (
   <View style={styles.container}>
     <View style={styles.buttons}>

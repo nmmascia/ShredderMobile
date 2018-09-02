@@ -4,25 +4,33 @@ import { StyleSheet, Text, View } from 'react-native';
 import TrackPair from '../TrackPair/TrackPair';
 
 const PracticeTrack = ({ name, artist }) => (
-  <View style={styles.container}>
+  <View>
     <Text style={styles.title}>You are currently practicing...</Text>
-    <TrackPair
-      name={name}
-      artist={artist}
-      scale="10"
-    />
+    <View style={styles.fakeImage} />
+    <View style={styles.detailsWrapper}>
+      <TrackPair
+        name={name}
+        artist={artist}
+        scale="10"
+      />
+    </View>
   </View>
 );
 
 const styles = StyleSheet.create({
-  container: {
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
   title: {
     fontSize: 22,
     fontWeight: '700',
     marginBottom: 10,
+  },
+  fakeImage: {
+    height: 300,
+    backgroundColor: '#ddd',
+  },
+  detailsWrapper: {
+    position: 'absolute',
+    bottom: 5,
+    left: 5,
   },
 });
 

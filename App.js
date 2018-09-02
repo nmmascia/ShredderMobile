@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import { NativeRouter, Route, Switch } from 'react-router-native';
-import { Constants } from 'expo';
 
 import Home from './containers/Home/Home';
 import Setlists from './containers/Setlists/Setlists';
@@ -11,6 +10,7 @@ import Setlist from './containers/Setlist/Setlist';
 import SetlistPractice from './containers/SetlistPractice/SetlistPractice';
 
 import FooterBar from './components/FooterBar/FooterBar';
+import HeaderBar from './components/HeaderBar/HeaderBar';
 
 import COLORS from './constants/colors';
 
@@ -25,6 +25,7 @@ export default class App extends React.Component {
       <ApolloProvider client={client}>
         <NativeRouter initialEntries={['/setlists/1/practice']}>
           <View style={styles.container}>
+            <HeaderBar />
             <Switch>
               <Route exact={true} path="/" component={Home} />
               <Route path="/setlists/:id/practice" component={SetlistPractice} />
@@ -44,6 +45,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.WHITE,
-    paddingTop: Constants.statusBarHeight,
   },
 });

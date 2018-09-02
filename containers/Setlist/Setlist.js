@@ -40,15 +40,15 @@ const Setlist = ({ match: { params } }) => {
             <View style={styles.body}>
               <Title text="Setlist" />
               <View style={styles.header}>
-                <Text style={styles.headerText}>{'Setlist stats'.toUpperCase()}</Text>
+                <Text style={styles.headerText}>Here are some details about this setlist...</Text>
               </View>
-              <ScrollView>
+              <View>
                 <Text>Number of Practices: 0</Text>
                 <Text>Number of Tracks: 0</Text>
                 <Text>Guitar tunings: Standard, Drop D</Text>
                 <Text>Guitars</Text>
                 {setlist.guitars && setlist.guitars.map((guitar) => <Text>{guitar.manufacturer}</Text>)}
-              </ScrollView>
+              </View>
               <View style={styles.header}>
                 <Text style={styles.headerText}>{'Tracks'.toUpperCase()}</Text>
               </View>

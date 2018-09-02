@@ -8,6 +8,8 @@ import Button from '../../components/Button/Button';
 import Title from '../../components/Title/Title';
 import PracticeTrack from '../../components/PracticeTrack/PracticeTrack';
 
+import COLORS from '../../constants/colors';
+
 const SETLIST_PRACTICE_QUERY = gql`
   query Setlist($id: ID!) {
     setlist(id: $id) {
@@ -42,6 +44,12 @@ export default class SetlistPractice extends React.Component {
     }));
   }
 
+  handleRestartPractice = () => {
+    this.setState(() => ({
+      currentTrack: 0,
+    }));
+  }
+
   handleCompletePractice = () => {
     console.log('completed!');
   }
@@ -64,16 +72,16 @@ export default class SetlistPractice extends React.Component {
                   artist={data.setlist.tracks[this.state.currentTrack].artist}
                 />
                 <Title
-                  text="You like to practice this song with..."
+                  text="You perform this song with your..."
                 />
-                <Text style={{ fontSize: 22, fontWeight: '700' }}>
+                <Text style={{ fontSize: 32, fontWeight: '700', color: COLORS.PURPLE }}>
                   {`${data.setlist.tracks[this.state.currentTrack].guitar.manufacturer} ${data.setlist.tracks[this.state.currentTrack].guitar.model}`}
                 </Text>
-                <Text>
-                  You like to play this song in Drop D
-                </Text>
-                <Text>
-                  But the song was recorded in standard tuning
+                <Title
+                  text="You'll play this song in..."
+                />
+                <Text style={{ fontSize: 32, fontWeight: '700', color: COLORS.PURPLE }}>
+                  Standard Tuning
                 </Text>
               </View>
               {
@@ -82,7 +90,7 @@ export default class SetlistPractice extends React.Component {
                 ) : (
                   <View>
                     <Button text="Complete Practice" onPress={this.handleCompletePractice} />
-                    <Button text="Start Over" onPress={this.handleCompletePractice} />
+                    <Button text="Start Over" onPress={this.handleRestartPractice} />
                   </View>
                 )
               }

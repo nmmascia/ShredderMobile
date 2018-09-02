@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
   container: {
     fontSize: 22,
     fontWeight: '700',
-    textAlign: 'center',
     paddingTop: 10,
     paddingBottom: 10,
   },
