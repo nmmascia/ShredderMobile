@@ -3,11 +3,11 @@ import { ScrollView, StyleSheet, Text, View, FlatList } from 'react-native';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
-import Button from '../../components/Button/Button';
 import Title from '../../components/Title/Title';
 import Loader from '../../components/Loader/Loader';
 import TrackPair from '../../components/TrackPair/TrackPair';
 import LinkButton from '../../components/LinkButton/LinkButton';
+import SetlistTrackOverview from '../../components/SetlistTrackOverview/SetlistTrackOverview';
 
 const SETLIST_QUERY = gql`
   query Setlist($id: ID!) {
@@ -25,10 +25,11 @@ const SETLIST_QUERY = gql`
 `;
 
 const Setlist = ({ match: { params } }) => {
+
   return (
     <Query
       query={SETLIST_QUERY}
-      variables={{ ...params }}
+      variables={{ id: params.id }}
     >
       {({ loading, data, error }) => {
         if (error) return <Text>Error!</Text>;
@@ -51,21 +52,13 @@ const Setlist = ({ match: { params } }) => {
               <View style={styles.header}>
                 <Text style={styles.headerText}>{'Tracks'.toUpperCase()}</Text>
               </View>
-              <FlatList
-                data={setlist.tracks}
-                keyExtractor={({ id }) => id}
-                renderItem={({ item }) => {
-                  return (
-                    <View style={styles.item}>
-                      <TrackPair {...item} />
-                    </View>
-                  );
-                }}
+              <SetlistTrackOverview
+                tracks={setlist.tracks}
               />
             </View>
             <View style={styles.footer}>
               <LinkButton
-                to="/setlists"
+                to={`/setlists/${params.id}/practice`}
                 text="Begin Practice"
               />
             </View>

@@ -1,11 +1,25 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const TrackPair = ({ name, artist }) => (
+const TrackPair = ({ name, artist, scale }) => (
   <View style={styles.container}>
     <View style={styles.pair}>
-      <Text style={styles.title}>{name}</Text>
-      <Text style={styles.subtitle}>{artist}</Text>
+      <Text
+        style={[
+          styles.title,
+          scale && { fontSize: 32 },
+        ]}
+      >
+        {name}
+      </Text>
+      <Text
+        style={[
+          styles.subtitle,
+          scale && { fontSize: 25 },
+        ]}
+      >
+        {artist}
+      </Text>
     </View>
   </View>
 );
