@@ -21,7 +21,7 @@ export default class App extends React.Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <NativeRouter>
+        <NativeRouter initialEntries={['/setlists/1/practice']}>
           <View style={styles.container}>
             <Switch>
               <Route exact={true} path="/" component={Home} />

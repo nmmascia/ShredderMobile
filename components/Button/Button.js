@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 
+import COLORS from '../../constants/colors';
+
 const Button = ({ onPress, text }) => {
   return (
     <TouchableOpacity
@@ -27,12 +29,12 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#673AB7',
+    backgroundColor: COLORS.PURPLE,
     height: 50,
   },
   text: {
-    color: '#eee',
-    fontSize: 18,
+    color: COLORS.WHITE,
+    fontSize: 20,
     fontWeight: '700',
   },
 });

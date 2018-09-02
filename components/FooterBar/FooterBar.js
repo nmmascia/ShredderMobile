@@ -2,14 +2,16 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Link } from 'react-router-native';
 
+import COLORS from '../../constants/colors';
+
 const FooterBar = () => (
   <View style={styles.container}>
     <View style={styles.buttons}>
       <Link to="/">
-        <Text>Home</Text>
+        <Text style={styles.text}>Home</Text>
       </Link>
       <Link to="/setlists">
-        <Text>Setlists</Text>
+        <Text style={styles.text}>Setlists</Text>
       </Link>
     </View>
   </View>
@@ -20,13 +22,18 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     height: 60,
-    backgroundColor: 'magenta',
+    backgroundColor: COLORS.PURPLE,
     width: '100%',
   },
   buttons: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+  },
+  text: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: COLORS.WHITE,
   },
 });
 

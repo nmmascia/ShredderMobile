@@ -57,23 +57,25 @@ export default class SetlistPractice extends React.Component {
           if (error) return <Text>Error!</Text>;
           if (loading) return <Loader />;
           return (
-            <View style={styles.container}>
-              <PracticeTrack
-                name={data.setlist.tracks[this.state.currentTrack].name}
-                artist={data.setlist.tracks[this.state.currentTrack].artist}
-              />
-              <Title
-                text="You like to practice this song with..."
-              />
-              <Text style={{ fontSize: 22, fontWeight: '700' }}>
-                {`${data.setlist.tracks[this.state.currentTrack].guitar.manufacturer} ${data.setlist.tracks[this.state.currentTrack].guitar.model}`}
-              </Text>
-              <Text>
-                You like to play this song in Drop D
-              </Text>
-              <Text>
-                But the song was recorded in standard tuning
-              </Text>
+            <View>
+              <View style={styles.container}>
+                <PracticeTrack
+                  name={data.setlist.tracks[this.state.currentTrack].name}
+                  artist={data.setlist.tracks[this.state.currentTrack].artist}
+                />
+                <Title
+                  text="You like to practice this song with..."
+                />
+                <Text style={{ fontSize: 22, fontWeight: '700' }}>
+                  {`${data.setlist.tracks[this.state.currentTrack].guitar.manufacturer} ${data.setlist.tracks[this.state.currentTrack].guitar.model}`}
+                </Text>
+                <Text>
+                  You like to play this song in Drop D
+                </Text>
+                <Text>
+                  But the song was recorded in standard tuning
+                </Text>
+              </View>
               {
                 data.setlist.tracks[this.state.currentTrack + 1] ? (
                   <Button text="Go to next track" onPress={this.handleGoToNextTrack} />
