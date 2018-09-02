@@ -12,6 +12,8 @@ import SetlistPractice from './containers/SetlistPractice/SetlistPractice';
 
 import FooterBar from './components/FooterBar/FooterBar';
 
+import COLORS from './constants/colors';
+
 const client = new ApolloClient({
   uri: 'http://localhost:8080/graphql',
   clientState: {},
@@ -41,7 +43,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#eee',
+    backgroundColor: COLORS.WHITE,
     paddingTop: Constants.statusBarHeight,
   },
 });
