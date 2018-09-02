@@ -24,9 +24,9 @@ const FooterBar = () => (
           size={30}
         />
       </Link>
-      <Link to="/setlists">
+      <Link to="/tracks">
         <Feather
-          name="sidebar"
+          name="music"
           color="white"
           size={30}
         />
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+    paddingBottom: 10,
   },
   text: {
     fontSize: 32,
