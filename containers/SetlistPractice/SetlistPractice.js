@@ -3,6 +3,8 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { StyleSheet, Text, View } from 'react-native';
 
+import CompletePractice from '../CompletePractice/CompletePractice';
+
 import Loader from '../../components/Loader/Loader';
 import Button from '../../components/Button/Button';
 import Title from '../../components/Title/Title';
@@ -89,7 +91,7 @@ export default class SetlistPractice extends React.Component {
                   <Button text="Go to next track" onPress={this.handleGoToNextTrack} />
                 ) : (
                   <View>
-                    <Button text="Complete Practice" onPress={this.handleCompletePractice} />
+                    <CompletePractice setlistId={params.id} />
                     <Button text="Start Over" onPress={this.handleRestartPractice} />
                   </View>
                 )
