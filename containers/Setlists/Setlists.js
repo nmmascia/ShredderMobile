@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -21,8 +22,9 @@ const SETLISTS_QUERY = gql`
 
 const Setlists = () => (
   <Query query={SETLISTS_QUERY}>
-    {({ loading, data }) => {
+    {({ loading, data, error }) => {
       if (loading) return <Loader />;
+      if (error) return <Text>Error!</Text>;
       const { user: { setlists } } = data;
       return <SetlistList setlists={setlists} />;
     }}

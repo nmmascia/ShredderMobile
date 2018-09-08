@@ -16,8 +16,9 @@ const QUERY = gql`
 
 const Home = () => (
   <Query query={QUERY}>
-    {({ loading, data }) => {
+    {({ loading, data, error }) => {
       if (loading) return <Loader />;
+      if (error) return <Text>Error!</Text>
 
       return (
         <View>
