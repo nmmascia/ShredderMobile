@@ -11,22 +11,22 @@ const SETLISTS_QUERY = gql`
       id
       setlists {
         id
-        favorited
+        favorited,
+        practicesCount,
+        numberOfTracks
       }
     }
   }
 `;
 
-const Setlists = () => {
-  return (
-    <Query query={SETLISTS_QUERY}>
-      {({ loading, data }) => {
-        if (loading) return <Loader />;
-        const { user: { setlists } } = data;
-        return <SetlistList setlists={setlists} />;
-      }}
-    </Query>
-  );
-};
+const Setlists = () => (
+  <Query query={SETLISTS_QUERY}>
+    {({ loading, data }) => {
+      if (loading) return <Loader />;
+      const { user: { setlists } } = data;
+      return <SetlistList setlists={setlists} />;
+    }}
+  </Query>
+);
 
 export default Setlists;

@@ -23,7 +23,7 @@ export default class App extends React.Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <NativeRouter initialEntries={['/setlists/1/practice']}>
+        <NativeRouter>
           <View style={styles.container}>
             <HeaderBar />
             <Switch>

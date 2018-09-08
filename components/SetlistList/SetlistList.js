@@ -13,6 +13,8 @@ const CREATE_SETLIST = gql`
     createSetlist {
       id
       favorited
+      practiesCount
+      numberOfTracks
     }
   }
 `;
