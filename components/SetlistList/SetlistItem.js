@@ -6,6 +6,8 @@ import { Feather } from '@expo/vector-icons';
 import Title from '../Title/Title';
 import TrackIcon from '../TrackIcon/TrackIcon';
 import FavoriteToggle from '../../containers/FavoriteToggle/FavoriteToggle';
+import Tag from '../Tag/Tag';
+import Tags from '../Tags/Tags';
 
 import COLORS from '../../constants/colors';
 
@@ -29,6 +31,29 @@ const SetlistItem = ({ id, favorited, practicesCount, numberOfTracks }) => (
         <Text style={styles.value}>{practicesCount}</Text>
         <Text style={styles.label}>Practices Count</Text>
       </View>
+      <View style={styles.item}>
+        <Feather color={COLORS.PURPLE} name="info" size={26} />
+        <Text style={styles.value}>0:30</Text>
+        <Text style={styles.label}>Practice Length</Text>
+      </View>
+      <Tags
+        header="Top Genres"
+        tags={[{
+          text: 'Rock',
+        }, {
+          text: 'Alternative',
+        }, {
+          text: 'Indie',
+        }]}
+      />
+      <Tags
+        header="Instruments"
+        tags={[{
+          text: 'Fender Telecaster',
+        }, {
+          text: 'Fender Stratocaster',
+        }]}
+      />
     </View>
   </View>
 );
