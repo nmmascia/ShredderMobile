@@ -4,6 +4,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import Loader from '../../components/Loader/Loader';
+import Profile from '../../components/Profile/Profile';
 
 const QUERY = gql`
   {
@@ -21,9 +22,12 @@ const Home = () => (
       if (error) return <Text>Error!</Text>
 
       return (
-        <View>
-          <Text>{`${data.user.name}`}</Text>
-        </View>
+        <Profile
+          name="Nicholas Mascia"
+          username="@nmmascia"
+          setlistsCount={4}
+          numberOfDaysPracticedStreak={10}
+        />
       );
     }}
   </Query>
