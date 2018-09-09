@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import Avatar from '../Avatar/Avatar';
 import QuickStats from '../QuickStats/QuickStats';
 import UserDetails from '../UserDetails/UserDetails';
 
@@ -14,6 +15,7 @@ const Profile = ({
   return (
     <View>
       <View style={styles.profileBanner}>
+        <Avatar />
         <View style={styles.userDetails}>
           <UserDetails
             name={name}
@@ -43,8 +45,9 @@ const styles = StyleSheet.create({
   },
   profileBanner: {
     height: 200,
-    backgroundColor: '#ddd',
+    // backgroundColor: '#ddd',
     justifyContent: 'flex-end',
+    alignItems: 'center',
   },
   userDetails: {
     paddingBottom: 20,
