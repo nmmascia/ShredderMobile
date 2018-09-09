@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import PropTypes from 'prop-types';
+import { StyleSheet, View } from 'react-native';
 
 const Avatar = () => {
   return (
@@ -17,6 +16,5 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
-
 
 export default Avatar;

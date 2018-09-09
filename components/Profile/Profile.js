@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
   },
   profileBanner: {
     height: 200,
-    // backgroundColor: '#ddd',
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
