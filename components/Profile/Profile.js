@@ -2,14 +2,17 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import QuickStats from '../QuickStats/QuickStats';
+import UserDetails from '../UserDetails/UserDetails';
 
 const Profile = ({ name, username, setlistsCount, numberOfDaysPracticedStreak }) => {
   return (
     <View>
       <View style={styles.profileBanner}>
         <View style={styles.userDetails}>
-          <Text>{name}</Text>
-          <Text>{username}</Text>
+          <UserDetails
+            name="Nicholas Mascia"
+            username="@nmmascia"
+          />
         </View>
       </View>
       <QuickStats
@@ -38,9 +41,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   userDetails: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
     paddingBottom: 20,
   },
 });
