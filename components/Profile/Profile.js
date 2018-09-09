@@ -4,27 +4,33 @@ import { StyleSheet, Text, View } from 'react-native';
 import QuickStats from '../QuickStats/QuickStats';
 import UserDetails from '../UserDetails/UserDetails';
 
-const Profile = ({ name, username, setlistsCount, numberOfDaysPracticedStreak }) => {
+const Profile = ({
+  name,
+  username,
+  setlistsCount,
+  totalPracticesCount,
+  numberOfDaysPracticedStreak
+}) => {
   return (
     <View>
       <View style={styles.profileBanner}>
         <View style={styles.userDetails}>
           <UserDetails
-            name="Nicholas Mascia"
-            username="@nmmascia"
+            name={name}
+            username={username}
           />
         </View>
       </View>
       <QuickStats
         stats={[{
           label: 'Setlists Count',
-          value: 9,
+          value: setlistsCount,
         }, {
           label: 'Total Practices',
-          value: 10,
+          value: 12,
         }, {
           label: 'Longest Streak',
-          value: 2,
+          value: numberOfDaysPracticedStreak,
         }]}
       />
     </View>
