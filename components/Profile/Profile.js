@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import QuickStats from '../QuickStats/QuickStats';
+
 const Profile = ({ name, username, setlistsCount, numberOfDaysPracticedStreak }) => {
   return (
     <View>
@@ -10,16 +12,18 @@ const Profile = ({ name, username, setlistsCount, numberOfDaysPracticedStreak })
           <Text>{username}</Text>
         </View>
       </View>
-      <View style={styles.quickStats}>
-        <View>
-          <Text>{setlistsCount}</Text>
-          <Text>Setlists Count</Text>
-        </View>
-        <View>
-          <Text>{numberOfDaysPracticedStreak}</Text>
-          <Text>Longest Practice Streak</Text>
-        </View>
-      </View>
+      <QuickStats
+        stats={[{
+          label: 'Setlists Count',
+          value: 9,
+        }, {
+          label: 'Total Practices',
+          value: 10,
+        }, {
+          label: 'Longest Streak',
+          value: 2,
+        }]}
+      />
     </View>
   );
 };
@@ -29,7 +33,7 @@ const styles = StyleSheet.create({
     display: 'flex',
   },
   profileBanner: {
-    height: 250,
+    height: 200,
     backgroundColor: '#ddd',
     justifyContent: 'flex-end',
   },
@@ -38,12 +42,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 20,
-  },
-  quickStats: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
   },
 });
 

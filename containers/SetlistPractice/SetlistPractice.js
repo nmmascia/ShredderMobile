@@ -105,8 +105,4 @@ export default class SetlistPractice extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
 });
