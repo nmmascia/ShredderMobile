@@ -9,6 +9,9 @@ import Loader from '../../components/Loader/Loader';
 import Button from '../../components/Button/Button';
 import Title from '../../components/Title/Title';
 import PracticeTrack from '../../components/PracticeTrack/PracticeTrack';
+import PracticeHeader from '../../components/PracticeHeader/PracticeHeader';
+import PracticeDetails from '../../components/PracticeDetails/PracticeDetails';
+
 
 import COLORS from '../../constants/colors';
 
@@ -68,24 +71,23 @@ export default class SetlistPractice extends React.Component {
           if (loading) return <Loader />;
           return (
             <View>
-              <View style={styles.container}>
-                <PracticeTrack
-                  name={data.setlist.tracks[this.state.currentTrack].name}
-                  artist={data.setlist.tracks[this.state.currentTrack].artist}
-                />
-                <Title
-                  text="You perform this song with your..."
-                />
-                <Text style={{ fontSize: 32, fontWeight: '700', color: COLORS.PURPLE }}>
-                  {`${data.setlist.tracks[this.state.currentTrack].guitar.manufacturer} ${data.setlist.tracks[this.state.currentTrack].guitar.model}`}
-                </Text>
-                <Title
-                  text="You'll play this song in..."
-                />
-                <Text style={{ fontSize: 32, fontWeight: '700', color: COLORS.PURPLE }}>
-                  Standard Tuning
-                </Text>
-              </View>
+              <PracticeHeader
+                currentTrackNumber={this.state.currentTrack + 1}
+                totalNumberOfTracks={data.setlist.tracks.length}
+              />
+              <PracticeTrack
+                name={data.setlist.tracks[this.state.currentTrack].name}
+                artist={data.setlist.tracks[this.state.currentTrack].artist}
+              />
+              <PracticeDetails
+                details={[{
+                  type: 'guitar',
+                  value: 'Fender Stratocaster',
+                }, {
+                  type: 'tuning',
+                  value: 'Standard',
+                }]}
+              />
               {
                 data.setlist.tracks[this.state.currentTrack + 1] ? (
                   <Button text="Go to next track" onPress={this.handleGoToNextTrack} />
