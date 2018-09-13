@@ -2,18 +2,15 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { StyleSheet, Text, View } from 'react-native';
+import { withRouter } from 'react-router-native';
 
 import CompletePractice from '../CompletePractice/CompletePractice';
 
 import Loader from '../../components/Loader/Loader';
 import Button from '../../components/Button/Button';
-import Title from '../../components/Title/Title';
 import PracticeTrack from '../../components/PracticeTrack/PracticeTrack';
 import PracticeHeader from '../../components/PracticeHeader/PracticeHeader';
 import PracticeDetails from '../../components/PracticeDetails/PracticeDetails';
-
-
-import COLORS from '../../constants/colors';
 
 const SETLIST_PRACTICE_QUERY = gql`
   query Setlist($id: ID!) {
@@ -56,7 +53,7 @@ export default class SetlistPractice extends React.Component {
   }
 
   handleCompletePractice = () => {
-    console.log('completed!');
+    this.props.history.push('/');
   }
 
   render() {
@@ -93,7 +90,12 @@ export default class SetlistPractice extends React.Component {
                   <Button text="Go to next track" onPress={this.handleGoToNextTrack} />
                 ) : (
                   <View>
-                    <CompletePractice setlistId={params.id} />
+                    <CompletePractice
+                      setlistId={params.id}
+                      onCompleteSetlist={() => {
+                        this.handleCompletePractice();
+                      }}
+                    />
                     <Button text="Start Over" onPress={this.handleRestartPractice} />
                   </View>
                 )

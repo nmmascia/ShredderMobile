@@ -13,7 +13,7 @@ const COMPLETE_PRACTICE_MUTATION = gql`
   }
 `;
 
-const CompletePractice = ({ setlistId }) => (
+const CompletePractice = ({ setlistId, onCompleteSetlist }) => (
   <Mutation
     mutation={COMPLETE_PRACTICE_MUTATION}
     variables={{ setlistId }}
@@ -22,7 +22,10 @@ const CompletePractice = ({ setlistId }) => (
       return (
         <Button
           text="Complete Practice"
-          onPress={completePracticeForSetlist}
+          onPress={async () => {
+            await completePracticeForSetlist();
+            onCompleteSetlist();
+          }}
         />
       );
     }}
