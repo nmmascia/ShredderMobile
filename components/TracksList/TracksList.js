@@ -1,43 +1,44 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { Feather } from '@expo/vector-icons';
-
 
 import LinkButton from '../LinkButton/LinkButton';
 
 import COLORS from '../../constants/colors';
 
 export default class TracksList extends React.Component {
-  renderTrack() {
-    return this.props.tracks.map((track) => {
-      return (
-        <View style={styles.trackContainer} key={track.id}>
-          <View>
-            <Text style={styles.trackName}>{track.name}</Text>
-            <Text style={styles.trackArtist}>{track.artist}</Text>
-          </View>
-          <View style={styles.editButtons}>
-            <Feather
-              color={COLORS.PURPLE}
-              name="edit"
-              size={28}
-            />
-            <Feather
-              color="red"
-              name="minus-circle"
-              size={28}
-            />
-          </View>
+  renderTrack({ item }) {
+    return (
+      <View style={styles.trackContainer} key={item.id}>
+        <View>
+          <Text style={styles.trackName}>{item.name}</Text>
+          <Text style={styles.trackArtist}>{item.artist}</Text>
         </View>
-      );
-    });
+        <View style={styles.editButtons}>
+          <Feather
+            color={COLORS.PURPLE}
+            name="edit"
+            size={28}
+          />
+          <Feather
+            color="red"
+            name="minus-circle"
+            size={28}
+          />
+        </View>
+      </View>
+    );
   }
 
   render() {
     return (
       <View>
-        {this.renderTrack()}
+        <FlatList
+          data={this.props.tracks}
+          keyExtractor={({ id }) => id}
+          renderItem={this.renderTrack}
+        />
         <LinkButton
           to="/tracks/create"
           text="Add new track"
