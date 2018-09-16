@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Feather } from '@expo/vector-icons';
 
 import LinkButton from '../LinkButton/LinkButton';
+import DeleteTrackButton from '../../containers/DeleteTrackButton/DeleteTrackButton';
 
 import COLORS from '../../constants/colors';
 
@@ -21,11 +22,7 @@ export default class TracksList extends React.Component {
             name="edit"
             size={28}
           />
-          <Feather
-            color="red"
-            name="minus-circle"
-            size={28}
-          />
+          <DeleteTrackButton trackId={item.id} />
         </View>
       </View>
     );
